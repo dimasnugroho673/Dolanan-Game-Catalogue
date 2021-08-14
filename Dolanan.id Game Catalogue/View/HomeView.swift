@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State var carouselIndex: Int = 0
+    @ObservedObject var creatorsData = CreatorViewModel()
     
     var body: some View {
         NavigationView {
@@ -32,7 +33,7 @@ struct HomeView: View {
                         GameRow()
                             .padding(.top, 20)
                         
-                        CreatorRow()
+                        CreatorRow(creators: creatorsData.dataCreators)
                             .padding(.top, 20)
                         
                         

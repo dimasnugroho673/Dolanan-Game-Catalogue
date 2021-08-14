@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct CreatorRow: View {
+    
+    var creators: [Result]
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Meet creators")
@@ -17,16 +21,19 @@ struct CreatorRow: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
-                    ForEach(0...5, id: \.self) { game in
-                        NavigationLink(destination: CreatorRow()) {
+                    ForEach(self.creators, id: \.id) { creator in
+                        NavigationLink(destination: CreatorDetailView()) {
                             Spacer()
                             Spacer()
-                            Image("creator_dummy")
-                                .resizable()
-                                .renderingMode(.original)
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 80)
-                                .clipShape(Circle())
+                            URLImage(URL(string: creator.image)!) { image in
+                                image
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 75)
+                                    .clipShape(Circle())
+                            }
+                            .frame(width: 75, height: 80)
                         }
                     }
                 }
@@ -35,8 +42,8 @@ struct CreatorRow: View {
     }
 }
 
-struct CreatorRow_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatorRow()
-    }
-}
+//struct CreatorRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreatorRow()
+//    }
+//}
