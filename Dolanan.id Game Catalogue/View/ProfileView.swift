@@ -54,9 +54,9 @@ struct ProfileView: View {
                     Button(action: {openURL(URL(string: "https://github.com/dimasnugroho673?tab=repositories")!)}) {
                         HStack {
                             Spacer()
-                                
+                            
                             HStack {
-                                Image("icon_github_white")
+                                Image(colorScheme == .light ? "icon_github_white" : "icon_github_black")
                                     .resizable()
                                     .frame(width: 25, height: 25)
                                 
@@ -67,34 +67,34 @@ struct ProfileView: View {
                             }
                             
                             Spacer()
-                            }
+                        }
                     }
                     .frame(width: 230, height: 50)
-                    .background(Color.black)
-                    .foregroundColor(.white)
+                    .background(colorScheme == .light ? Color.black : Color.white)
+                    .foregroundColor(colorScheme == .light ? Color.white : Color.black)
                     .cornerRadius(15)
                     
                 }
                 
                 
-              
+                
             }
         }
         .navigationTitle("Profile").navigationBarTitleDisplayMode(.large)
-            .navigationBarBackButtonHidden(true)
-                    // Add your custom back button here
-                    .navigationBarItems(leading:
-                        Button(action: {
-                            self.presentation.wrappedValue.dismiss()
-                        }) {
-                            HStack {
-                                Image(systemName: "chevron.backward.circle.fill")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(colorScheme == .light ? .black : .white)
-                            }
-                    })
-
+        .navigationBarBackButtonHidden(true)
+        // Add your custom back button here
+        .navigationBarItems(leading:
+                                Button(action: {
+                                    self.presentation.wrappedValue.dismiss()
+                                }) {
+                                    HStack {
+                                        Image(systemName: "chevron.backward.circle.fill")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(colorScheme == .light ? .black : .white)
+                                    }
+                                })
+        
     }
 }
 
