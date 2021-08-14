@@ -11,6 +11,8 @@
 		40CA9FC126C787CE00F5D0CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA9FC026C787CE00F5D0CB /* ContentView.swift */; };
 		40CA9FC326C787CF00F5D0CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9FC226C787CF00F5D0CB /* Assets.xcassets */; };
 		40CA9FC626C787CF00F5D0CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40CA9FC526C787CF00F5D0CB /* Preview Assets.xcassets */; };
+		40CA9FD326C793B100F5D0CB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA9FD226C793B100F5D0CB /* HomeView.swift */; };
+		40CA9FD526C7945200F5D0CB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA9FD426C7945200F5D0CB /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		40CA9FC226C787CF00F5D0CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40CA9FC526C787CF00F5D0CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		40CA9FC726C787CF00F5D0CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40CA9FD226C793B100F5D0CB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		40CA9FD426C7945200F5D0CB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +56,10 @@
 		40CA9FBD26C787CE00F5D0CB /* Dolanan.id Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				40CA9FCF26C78F3700F5D0CB /* Model */,
+				40CA9FCE26C78F2D00F5D0CB /* ViewModel */,
+				40CA9FCD26C78F1D00F5D0CB /* View */,
 				40CA9FBE26C787CE00F5D0CB /* Dolanan_id_Game_CatalogueApp.swift */,
-				40CA9FC026C787CE00F5D0CB /* ContentView.swift */,
 				40CA9FC226C787CF00F5D0CB /* Assets.xcassets */,
 				40CA9FC726C787CF00F5D0CB /* Info.plist */,
 				40CA9FC426C787CF00F5D0CB /* Preview Content */,
@@ -67,6 +73,30 @@
 				40CA9FC526C787CF00F5D0CB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		40CA9FCD26C78F1D00F5D0CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40CA9FC026C787CE00F5D0CB /* ContentView.swift */,
+				40CA9FD226C793B100F5D0CB /* HomeView.swift */,
+				40CA9FD426C7945200F5D0CB /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		40CA9FCE26C78F2D00F5D0CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		40CA9FCF26C78F3700F5D0CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40CA9FD526C7945200F5D0CB /* ProfileView.swift in Sources */,
+				40CA9FD326C793B100F5D0CB /* HomeView.swift in Sources */,
 				40CA9FC126C787CE00F5D0CB /* ContentView.swift in Sources */,
 				40CA9FBF26C787CE00F5D0CB /* Dolanan_id_Game_CatalogueApp.swift in Sources */,
 			);
