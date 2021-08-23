@@ -1,0 +1,21 @@
+line_length:
+    warning: 500
+    error: 600
+    
+type_body_length:
+    warning: 1000
+    error: 2000
+
+identifier_name:
+  allowed_symbols: "_"
+  min_length: # only min_length
+    error: 4 # only error
+  excluded: # excluded via string array
+    - id
+    - key
+    - API
+    - url
+    - URL
+    
+type_name:
+  allowed_symbols: "_"
