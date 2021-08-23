@@ -8,6 +8,6 @@
 import Foundation
 
 struct Constants {
-    static let API = "https://api.rawg.io/api/"
-    static let API_KEY = "77d67f26317f4b479c74757b1109290d"
+    static let API: String = "https://api.rawg.io/api/"
+    static let API_KEY: String = ""
 }
