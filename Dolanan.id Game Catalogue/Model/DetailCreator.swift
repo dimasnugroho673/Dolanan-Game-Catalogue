@@ -8,12 +8,11 @@
 import Foundation
 
 struct DetailCreatorModel: Codable {
-    let description: String
-    let rating: String
-    
-    enum CodingKeys: String, CodingKey {
-        case description
-        case rating
-    }
-    
+  let description: String
+  let rating: String
+
+  enum CodingKeys: String, CodingKey {
+    case description
+    case rating
+  }
 }
