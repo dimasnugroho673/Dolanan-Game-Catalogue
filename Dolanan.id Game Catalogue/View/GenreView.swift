@@ -34,7 +34,7 @@ struct GenreView: View {
         ScrollView {
           LazyVGrid(columns: column, spacing: 10) {
             ForEach(genreData.dataGenres, id: \.id) { genre in
-              NavigationLink(destination: ListGames(navTitle: genre.name, games: genre.games)) {
+              NavigationLink(destination: ListGamesView(navTitle: genre.name, games: genre.games)) {
                 WebImage(url: URL(string: genre.imageBackground)!)
                   .resizable()
                   .aspectRatio(contentMode: .fill)

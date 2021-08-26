@@ -1,5 +1,5 @@
 //
-//  ListGames.swift
+//  ListGamesView.swift
 //  Dolanan.id Game Catalogue
 //
 //  Created by Dimas Putro on 21/08/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListGames: View {
+struct ListGamesView: View {
   
   let navTitle: String
   let games: [Games]
