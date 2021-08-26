@@ -1,19 +1,19 @@
 //
-//  CreatorViewModel.swift
+//  PopularGameViewModel.swift
 //  Dolanan.id Game Catalogue
 //
-//  Created by Dimas Putro on 14/08/21.
+//  Created by Dimas Putro on 15/08/21.
 //
 
 import Foundation
 import SwiftUI
 import Combine
 
-class CreatorViewModel: ObservableObject {
+class PopularGameViewModel: ObservableObject {
   
   let objectWillChange = ObservableObjectPublisher()
   
-  @Published var dataCreators = [Result]() {
+  @Published var dataPopularGame = [ResultPopularGame]() {
     willSet {
       objectWillChange.send()
     }
@@ -23,7 +23,7 @@ class CreatorViewModel: ObservableObject {
   @Published var errorMessage: String = ""
   
   init() {
-    guard let url = URL(string: "\(Constants.api)creators?key=\(Constants.apiKey)") else {
+    guard let url = URL(string: "\(Constants.api)games?key=\(Constants.apiKey)&page=1") else {
       fatalError("Error while get url")
     }
     
@@ -35,11 +35,11 @@ class CreatorViewModel: ObservableObject {
       }
       
       do {
-        let result = try JSONDecoder().decode(CreatorModel.self, from: data)
+        let result = try JSONDecoder().decode(PopularGameModel.self, from: data)
         
         self.isLoading = false
         DispatchQueue.main.async {
-          self.dataCreators = result.results
+          self.dataPopularGame = result.results
         }
       } catch let error {
         self.errorMessage = "Gagal memuat data : \(error.localizedDescription)"

@@ -1,29 +1,29 @@
 //
-//  CreatorViewModel.swift
+//  SearchGameViewModel.swift
 //  Dolanan.id Game Catalogue
 //
-//  Created by Dimas Putro on 14/08/21.
+//  Created by Dimas Putro on 17/08/21.
 //
 
 import Foundation
 import SwiftUI
 import Combine
 
-class CreatorViewModel: ObservableObject {
+class SearchGameViewModel: ObservableObject {
   
   let objectWillChange = ObservableObjectPublisher()
   
-  @Published var dataCreators = [Result]() {
+  @Published var isLoading = true
+  @Published var errorMessage: String = ""
+  @Published var resultSearching = [ResultPopularGame]() {
     willSet {
       objectWillChange.send()
     }
   }
   
-  @Published var isLoading = true
-  @Published var errorMessage: String = ""
-  
-  init() {
-    guard let url = URL(string: "\(Constants.api)creators?key=\(Constants.apiKey)") else {
+  func loadData(keyword: String) {
+    let keywordToURL = keyword.replacingOccurrences(of: " ", with: "+")
+    guard let url = URL(string: "\(Constants.api)games?search=\(keywordToURL)&key=\(Constants.apiKey)") else {
       fatalError("Error while get url")
     }
     
@@ -31,16 +31,18 @@ class CreatorViewModel: ObservableObject {
       guard let data = data, error == nil else {
         print("Error : \(error!.localizedDescription)")
         self.errorMessage = "Gagal memuat data : \(error!.localizedDescription)"
+        
         return
       }
       
       do {
-        let result = try JSONDecoder().decode(CreatorModel.self, from: data)
+        let result = try JSONDecoder().decode(PopularGameModel.self, from: data)
         
         self.isLoading = false
         DispatchQueue.main.async {
-          self.dataCreators = result.results
+          self.resultSearching = result.results
         }
+        
       } catch let error {
         self.errorMessage = "Gagal memuat data : \(error.localizedDescription)"
         print("Error : \(error.localizedDescription)")
