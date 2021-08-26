@@ -99,6 +99,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4011B2EB26D760DB00409A32 /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				405BF4D626CAA2C200935063 /* ScreenshotGameRow.swift */,
+				40CA9FD726C7A07600F5D0CB /* PopularGameRow.swift */,
+				40DCD35226CBA6810091E562 /* SearchGameRow.swift */,
+				40CA9FDB26C7A49A00F5D0CB /* CreatorRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		40CA9FB226C787CE00F5D0CB = {
 			isa = PBXGroup;
 			children = (
@@ -142,17 +153,14 @@
 		40CA9FCD26C78F1D00F5D0CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4011B2EB26D760DB00409A32 /* Row */,
 				40CA9FC026C787CE00F5D0CB /* ContentView.swift */,
 				40CA9FD226C793B100F5D0CB /* HomeView.swift */,
-				405BF4D626CAA2C200935063 /* ScreenshotGameRow.swift */,
 				4033A8F026D0D003007F4F7B /* PreviewScreenshotView.swift */,
 				40CA9FD426C7945200F5D0CB /* ProfileView.swift */,
-				40CA9FD726C7A07600F5D0CB /* PopularGameRow.swift */,
-				40CA9FDB26C7A49A00F5D0CB /* CreatorRow.swift */,
 				40CA9FD926C7A10200F5D0CB /* GameDetailView.swift */,
 				40CA9FDD26C7B24D00F5D0CB /* SearchView.swift */,
 				40CA9FE526C8216400F5D0CB /* CreatorDetailView.swift */,
-				40DCD35226CBA6810091E562 /* SearchGameRow.swift */,
 				407834EF26CCE9D600FB51EC /* GameBookmarkView.swift */,
 				4033A8E826D02A0D007F4F7B /* GenreView.swift */,
 				4033A8EE26D02D03007F4F7B /* ListGamesView.swift */,
