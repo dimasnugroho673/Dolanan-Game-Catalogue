@@ -112,7 +112,7 @@ struct SearchView: View {
               .padding(.leading, -20)
             } else {
               if dataResult.isLoading {
-                HStack (alignment: .center) {
+                HStack(alignment: .center) {
                   Spacer()
                   VStack {
                     Spacer()
@@ -124,7 +124,7 @@ struct SearchView: View {
                 }.frame(width: .infinity, height: UIScreen.main.bounds.height / 2, alignment: .center)
               } else {
                 if dataResult.resultSearching.isEmpty {
-                  HStack (alignment: .center) {
+                  HStack(alignment: .center) {
                     VStack(alignment: .center) {
                       Spacer()
                       Image(systemName: "questionmark.folder")

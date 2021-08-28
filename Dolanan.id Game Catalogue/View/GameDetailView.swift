@@ -73,7 +73,7 @@ struct GameDetailView: View {
             .padding(.top, -10)
           
           HStack(spacing: 15) {
-            if gameBookmarkData.items.filter{ $0.id == self.id }.count > 0 {
+            if gameBookmarkData.items.filter { $0.id == self.id }.count > 0 {
               Button(action: {
                 removeBookmarkButtonTap()
               }) {

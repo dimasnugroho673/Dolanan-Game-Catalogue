@@ -25,7 +25,9 @@ class GameBookmarkViewModel: ObservableObject {
     guard
       let data = UserDefaults.standard.data(forKey: key),
       let savedItems = try? JSONDecoder().decode([GameBookmarkModel].self, from: data)
-    else { return }
+    else {
+      return
+    }
     
     self.items = savedItems
   }
