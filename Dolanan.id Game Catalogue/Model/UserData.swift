@@ -8,10 +8,10 @@
 import Foundation
 
 struct UserDataModel: Codable {
-  var name: String
-  var email: String
-  var phoneNumber: String
-  var website: String
-  var githubUrl: String
-  var profilePicture: Data
+  let name: String
+  let email: String
+  let phoneNumber: String
+  let website: String
+  let githubUrl: String
+  let profilePicture: Data
 }
