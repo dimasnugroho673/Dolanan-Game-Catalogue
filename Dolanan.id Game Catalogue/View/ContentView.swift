@@ -36,7 +36,7 @@ struct ContentView: View {
         GameBookmarkView()
           .tabItem {
             Image(systemName: "bookmark")
-            Text("bookmark")
+            Text("Bookmark")
           }
       }
     } else {
