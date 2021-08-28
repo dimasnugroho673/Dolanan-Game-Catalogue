@@ -69,11 +69,7 @@ struct HomeView: View {
         .navigationTitle("Home")
         .navigationBarItems(trailing:
                               NavigationLink(destination: ProfileView()) {
-                                Image("profile_dimas_greyscle")
-                                  .resizable()
-                                  .renderingMode(.original)
-                                  .frame(width: 37, height: 37)
-                                  .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                ProfilePictureNavbar()
                               })
       }
     }

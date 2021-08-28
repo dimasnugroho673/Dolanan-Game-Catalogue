@@ -24,7 +24,9 @@ class GameLikedViewModel: ObservableObject {
   func fetchItems() {
     guard
       let savedItems =  UserDefaults.standard.array(forKey: key) as? [Int]
-    else { return }
+    else {
+      return
+    }
 
     self.items = savedItems
   }

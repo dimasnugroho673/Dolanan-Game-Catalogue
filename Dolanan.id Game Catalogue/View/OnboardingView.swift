@@ -15,6 +15,8 @@ struct OnboardingView: View {
   
   private let imagesShow = ["img_onboarding", "img_onboarding2", "img_onboarding3"]
   private let timerShowcase = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
+
+  @ObservedObject var userData = UserDataViewModel()
   
   var body: some View {
     ZStack {
@@ -44,9 +46,10 @@ struct OnboardingView: View {
             .foregroundColor(Color.init(.systemGray3))
             .font(.subheadline)
             .padding(.top, 5)
-          
+
           Button(action: {
             UserDefaults.standard.setValue(true, forKey: "UserExist")
+            userData.addItem(data: UserDataModel(name: "Dimas Nugroho Putro", email: "dimasnugroho673@gmail.com", phoneNumber: "082285592029", website: "dimasnugroho673.github.io", githubUrl: "https://github.com/dimasnugroho673", profilePicture: Data()))
             self.isUserExist = true
             self.presentation.wrappedValue.dismiss()
           }, label: {

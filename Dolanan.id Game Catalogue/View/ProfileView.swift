@@ -12,68 +12,108 @@ struct ProfileView: View {
   @Environment(\.presentationMode) var presentation
   @Environment(\.openURL) var openURL
   @Environment(\.colorScheme) var colorScheme
-  
+
+  @State var isEditModalShow: Bool = false
+
+  @State var profileImageData: Data = Data()
+  @State var fullname: String = ""
+  @State var email: String = ""
+  @State var noHP: String = ""
+  @State var website: String = ""
+  @State var githubLink: String = ""
+
+  @EnvironmentObject var userData: UserDataViewModel
+
   var body: some View {
     ScrollView(.vertical) {
       ZStack(alignment: .top) {
         VStack {
           VStack {
-            Image("profile_dimas_greyscle")
-              .resizable()
-              .frame(width: 100, height: 100)
-              .clipShape(Circle())
-            
-            Text("Dimas Nugroho Putro")
+
+            if !profileImageData.isEmpty {
+              // swiftlint:disable:next force_try
+              let decoded = try! PropertyListDecoder().decode(Data.self, from: userData.item!.profilePicture)
+
+              Image(uiImage: UIImage(data: decoded)!)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+            } else {
+              Image("profile_dummy")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+            }
+
+            Text(userData.item?.name ?? "")
               .font(.title2)
               .fontWeight(.bold)
               .padding(.top, 10)
           }
           .padding(.top, 20)
-          
+
           Spacer().frame(height: 30)
-          
+
           VStack(alignment: .leading, spacing: 12) {
             HStack {
               Image(systemName: "envelope")
-              Text("dimasnugroho673@gmail.com")
+              Text(userData.item?.email ?? "")
             }
             
             HStack {
               Image(systemName: "phone")
-              Text("082285592029")
+              Text(userData.item?.phoneNumber ?? "")
             }
-            
+
             HStack {
               Image(systemName: "network")
-              Text("dimasnugroho673.github.io")
+              Text(userData.item?.website ?? "")
             }
           }
-          
+
           Spacer().frame(height: 50)
-          
-          Button(action: {
-            openURL(URL(string: "https://github.com/dimasnugroho673?tab=repositories")!)
-          }) {
-            HStack {
-              Spacer()
+
+          if userData.item?.githubUrl != "" {
+            Button(action: {
+              openURL(URL(string: userData.item?.githubUrl ?? "")!)
+            }) {
               HStack {
-                Image(colorScheme == .light ? "icon_github_white" : "icon_github_black")
-                  .resizable()
-                  .frame(width: 25, height: 25)
-                
-                Text("View on GitHub")
-                  .font(.callout)
-                  .fontWeight(.bold)
-                  .padding()
+                Spacer()
+                HStack {
+                  Image(colorScheme == .light ? "icon_github_white" : "icon_github_black")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+
+                  Text("View on GitHub")
+                    .font(.callout)
+                    .fontWeight(.bold)
+                    .padding()
+                }
+
+                Spacer()
               }
-              
-              Spacer()
             }
+            .frame(width: 230, height: 50)
+            .background(colorScheme == .light ? Color.black : Color.white)
+            .foregroundColor(colorScheme == .light ? Color.white : Color.black)
+            .cornerRadius(15)
           }
-          .frame(width: 230, height: 50)
-          .background(colorScheme == .light ? Color.black : Color.white)
-          .foregroundColor(colorScheme == .light ? Color.white : Color.black)
-          .cornerRadius(15)
+
+        }
+        .onAppear {
+          /// fetch user data
+          self.userData.fetchItem()
+
+          /// fill state variable with data from environtment object after fetchItem()
+          self.fullname = userData.item?.name ?? ""
+          self.email = userData.item?.email ?? ""
+          self.noHP = userData.item?.phoneNumber ?? ""
+          self.website = userData.item?.website ?? ""
+          self.githubLink = userData.item?.githubUrl ?? ""
+          self.profileImageData = userData.item?.profilePicture ?? Data()
+
         }
       }
     }
@@ -89,7 +129,27 @@ struct ProfileView: View {
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(colorScheme == .light ? .black : .white)
                             }
+                          },
+                        trailing:
+                          Button(action: {
+                            self.isEditModalShow = true
+                          }, label: {
+                            Text("Edit")
                           })
+                          .sheet(isPresented: $isEditModalShow, onDismiss: {
+                            self.userData.fetchItem()
+
+                            /// fill state variable with data from environtment object after fetchItem()
+                            self.fullname = userData.item?.name ?? ""
+                            self.email = userData.item?.email ?? ""
+                            self.noHP = userData.item?.phoneNumber ?? ""
+                            self.website = userData.item?.website ?? ""
+                            self.githubLink = userData.item?.githubUrl ?? ""
+                            self.profileImageData = userData.item?.profilePicture ?? Data()
+                          }, content: {
+                            EditProfileView()
+                          })
+    )
   }
 }
 

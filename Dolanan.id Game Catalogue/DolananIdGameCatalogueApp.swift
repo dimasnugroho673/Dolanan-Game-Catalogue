@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct DolananIdGameCatalogueApp: App {
+
+  @StateObject var userData: UserDataViewModel = UserDataViewModel()
+
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .environmentObject(userData)
     }
   }
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400788B826D92B0A00C535E8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400788B726D92B0A00C535E8 /* UserData.swift */; };
+		400788BA26D92BAA00C535E8 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400788B926D92BAA00C535E8 /* UserDataViewModel.swift */; };
+		4011B2ED26D7880A00409A32 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011B2EC26D7880A00409A32 /* EditProfileView.swift */; };
+		4011B2F026D79AED00409A32 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4011B2EF26D79AED00409A32 /* ImagePicker.swift */; };
+		4027096F26DA920C001E4D9B /* ProfilePictureNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4027096E26DA920C001E4D9B /* ProfilePictureNavbar.swift */; };
 		4033A8E926D02A0D007F4F7B /* GenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033A8E826D02A0D007F4F7B /* GenreView.swift */; };
 		4033A8EB26D02B0B007F4F7B /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033A8EA26D02B0B007F4F7B /* Genre.swift */; };
 		4033A8ED26D02BAB007F4F7B /* GenreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033A8EC26D02BAB007F4F7B /* GenreViewModel.swift */; };
@@ -47,6 +52,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		400788B726D92B0A00C535E8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		400788B926D92BAA00C535E8 /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
+		4011B2EC26D7880A00409A32 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		4011B2EF26D79AED00409A32 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		4027096E26DA920C001E4D9B /* ProfilePictureNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureNavbar.swift; sourceTree = "<group>"; };
 		4033A8E826D02A0D007F4F7B /* GenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreView.swift; sourceTree = "<group>"; };
 		4033A8EA26D02B0B007F4F7B /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		4033A8EC26D02BAB007F4F7B /* GenreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewModel.swift; sourceTree = "<group>"; };
@@ -106,8 +116,17 @@
 				40CA9FD726C7A07600F5D0CB /* PopularGameRow.swift */,
 				40DCD35226CBA6810091E562 /* SearchGameRow.swift */,
 				40CA9FDB26C7A49A00F5D0CB /* CreatorRow.swift */,
+				4027096E26DA920C001E4D9B /* ProfilePictureNavbar.swift */,
 			);
 			path = Row;
+			sourceTree = "<group>";
+		};
+		4011B2EE26D79ADC00409A32 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4011B2EF26D79AED00409A32 /* ImagePicker.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		40CA9FB226C787CE00F5D0CB = {
@@ -129,6 +148,7 @@
 		40CA9FBD26C787CE00F5D0CB /* Dolanan.id Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				4011B2EE26D79ADC00409A32 /* Utils */,
 				40CA9FCF26C78F3700F5D0CB /* Model */,
 				40CA9FCE26C78F2D00F5D0CB /* ViewModel */,
 				40CA9FCD26C78F1D00F5D0CB /* View */,
@@ -158,6 +178,7 @@
 				40CA9FD226C793B100F5D0CB /* HomeView.swift */,
 				4033A8F026D0D003007F4F7B /* PreviewScreenshotView.swift */,
 				40CA9FD426C7945200F5D0CB /* ProfileView.swift */,
+				4011B2EC26D7880A00409A32 /* EditProfileView.swift */,
 				40CA9FD926C7A10200F5D0CB /* GameDetailView.swift */,
 				40CA9FDD26C7B24D00F5D0CB /* SearchView.swift */,
 				40CA9FE526C8216400F5D0CB /* CreatorDetailView.swift */,
@@ -180,6 +201,7 @@
 				409F6A6826CF687600E1A80B /* DetailCreatorViewModel.swift */,
 				409F6A6A26CFD5BA00E1A80B /* GameLikedViewModel.swift */,
 				4033A8EC26D02BAB007F4F7B /* GenreViewModel.swift */,
+				400788B926D92BAA00C535E8 /* UserDataViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -194,6 +216,7 @@
 				4033A8EA26D02B0B007F4F7B /* Genre.swift */,
 				4094869A26D4B448001E0C74 /* Carousel.swift */,
 				4094869C26D4B4E3001E0C74 /* SuggesstionGame.swift */,
+				400788B726D92B0A00C535E8 /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,19 +337,24 @@
 				409F6A6926CF687600E1A80B /* DetailCreatorViewModel.swift in Sources */,
 				405BF4DE26CB905700935063 /* DetailGameViewModel.swift in Sources */,
 				4033A8F126D0D003007F4F7B /* PreviewScreenshotView.swift in Sources */,
+				4011B2F026D79AED00409A32 /* ImagePicker.swift in Sources */,
 				40CA9FDC26C7A49A00F5D0CB /* CreatorRow.swift in Sources */,
+				4011B2ED26D7880A00409A32 /* EditProfileView.swift in Sources */,
 				4033A8EF26D02D03007F4F7B /* ListGamesView.swift in Sources */,
 				405BF4DC26CB8EC700935063 /* DetailGame.swift in Sources */,
 				408E23C726D1F5CC000B05F5 /* OnboardingView.swift in Sources */,
 				40CA9FDE26C7B24D00F5D0CB /* SearchView.swift in Sources */,
+				4027096F26DA920C001E4D9B /* ProfilePictureNavbar.swift in Sources */,
 				40CA9FD826C7A07600F5D0CB /* PopularGameRow.swift in Sources */,
 				40CA9FF026C830BC00F5D0CB /* PopularGame.swift in Sources */,
 				4033A8ED26D02BAB007F4F7B /* GenreViewModel.swift in Sources */,
 				40CA9FF226C831FA00F5D0CB /* PopularGameViewModel.swift in Sources */,
 				40CA9FE426C81EEC00F5D0CB /* Constants.swift in Sources */,
 				40DCD35526CC01C40091E562 /* SearchGameViewModel.swift in Sources */,
+				400788B826D92B0A00C535E8 /* UserData.swift in Sources */,
 				407834EC26CCE4F700FB51EC /* GameBookmarkViewModel.swift in Sources */,
 				40CA9FC126C787CE00F5D0CB /* ContentView.swift in Sources */,
+				400788BA26D92BAA00C535E8 /* UserDataViewModel.swift in Sources */,
 				408491E726D3705800E1C1F5 /* Extensions.swift in Sources */,
 				409F6A6726CF651100E1A80B /* DetailCreator.swift in Sources */,
 				40CA9FBF26C787CE00F5D0CB /* DolananIdGameCatalogueApp.swift in Sources */,

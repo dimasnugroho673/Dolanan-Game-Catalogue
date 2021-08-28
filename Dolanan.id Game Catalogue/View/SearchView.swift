@@ -150,11 +150,7 @@ struct SearchView: View {
         .navigationTitle("Search")
         .navigationBarItems(trailing:
                               NavigationLink(destination: ProfileView()) {
-                                Image("profile_dimas_greyscle")
-                                  .resizable()
-                                  .renderingMode(.original)
-                                  .frame(width: 37, height: 37)
-                                  .clipShape(Circle())
+                                ProfilePictureNavbar()
                               })
       }
     }
