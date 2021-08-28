@@ -16,8 +16,7 @@ struct ProfilePictureNavbar: View {
     var body: some View {
       VStack {
         if !profileImageData.isEmpty {
-          // swiftlint:disable:next force_try
-          let decoded = try! PropertyListDecoder().decode(Data.self, from: profileImageData)
+          let decoded = (try? PropertyListDecoder().decode(Data.self, from: profileImageData)) ??  Data()
 
           Image(uiImage: UIImage(data: decoded)!)
             .resizable()

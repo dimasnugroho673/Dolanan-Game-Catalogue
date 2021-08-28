@@ -33,11 +33,8 @@ struct EditProfileView: View {
           Button(action: {
             self.isShowEditProfilePictureActionSheet = true
           }, label: {
-            //            Image(uiImage: profileImage)
-
             if !profileImageData.isEmpty {
-              // swiftlint:disable:next force_try
-              let decoded = try! PropertyListDecoder().decode(Data.self, from: profileImageData)
+              let decoded = (try? PropertyListDecoder().decode(Data.self, from: profileImageData)) ?? Data()
 
               Image(uiImage: UIImage(data: decoded)!)
                 .resizable()
@@ -54,7 +51,6 @@ struct EditProfileView: View {
                         .bold()
                         .padding(.top, -5)
                     )
-
                     .padding(.top, 70)
                 )
                 .clipShape(Circle())
@@ -74,7 +70,6 @@ struct EditProfileView: View {
                         .bold()
                         .padding(.top, -5)
                     )
-
                     .padding(.top, 70)
                 )
                 .clipShape(Circle())
@@ -113,7 +108,7 @@ struct EditProfileView: View {
           })
 
           Section(header: Text("Developer Only"), content: {
-              TextField("GitHub Link", text: $githubLink)
+            TextField("GitHub Link", text: $githubLink)
 
           })
         }

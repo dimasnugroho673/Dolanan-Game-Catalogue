@@ -12,28 +12,27 @@ struct ProfileView: View {
   @Environment(\.presentationMode) var presentation
   @Environment(\.openURL) var openURL
   @Environment(\.colorScheme) var colorScheme
-
+  
   @State var isEditModalShow: Bool = false
-
+  
   @State var profileImageData: Data = Data()
   @State var fullname: String = ""
   @State var email: String = ""
   @State var noHP: String = ""
   @State var website: String = ""
   @State var githubLink: String = ""
-
+  
   @EnvironmentObject var userData: UserDataViewModel
-
+  
   var body: some View {
     ScrollView(.vertical) {
       ZStack(alignment: .top) {
         VStack {
           VStack {
-
+            
             if !profileImageData.isEmpty {
-              // swiftlint:disable:next force_try
-              let decoded = try! PropertyListDecoder().decode(Data.self, from: userData.item!.profilePicture)
-
+              let decoded = (try? PropertyListDecoder().decode(Data.self, from: userData.item!.profilePicture)) ?? Data()
+              
               Image(uiImage: UIImage(data: decoded)!)
                 .resizable()
                 .scaledToFill()
@@ -46,16 +45,16 @@ struct ProfileView: View {
                 .frame(width: 100, height: 100)
                 .clipShape(Circle())
             }
-
+            
             Text(userData.item?.name ?? "")
               .font(.title2)
               .fontWeight(.bold)
               .padding(.top, 10)
           }
           .padding(.top, 20)
-
+          
           Spacer().frame(height: 30)
-
+          
           VStack(alignment: .leading, spacing: 12) {
             HStack {
               Image(systemName: "envelope")
@@ -66,15 +65,15 @@ struct ProfileView: View {
               Image(systemName: "phone")
               Text(userData.item?.phoneNumber ?? "")
             }
-
+            
             HStack {
               Image(systemName: "network")
               Text(userData.item?.website ?? "")
             }
           }
-
+          
           Spacer().frame(height: 50)
-
+          
           if userData.item?.githubUrl != "" {
             Button(action: {
               openURL(URL(string: userData.item?.githubUrl ?? "")!)
@@ -85,13 +84,13 @@ struct ProfileView: View {
                   Image(colorScheme == .light ? "icon_github_white" : "icon_github_black")
                     .resizable()
                     .frame(width: 25, height: 25)
-
+                  
                   Text("View on GitHub")
                     .font(.callout)
                     .fontWeight(.bold)
                     .padding()
                 }
-
+                
                 Spacer()
               }
             }
@@ -100,12 +99,12 @@ struct ProfileView: View {
             .foregroundColor(colorScheme == .light ? Color.white : Color.black)
             .cornerRadius(15)
           }
-
+          
         }
         .onAppear {
           /// fetch user data
           self.userData.fetchItem()
-
+          
           /// fill state variable with data from environtment object after fetchItem()
           self.fullname = userData.item?.name ?? ""
           self.email = userData.item?.email ?? ""
@@ -113,7 +112,7 @@ struct ProfileView: View {
           self.website = userData.item?.website ?? ""
           self.githubLink = userData.item?.githubUrl ?? ""
           self.profileImageData = userData.item?.profilePicture ?? Data()
-
+          
         }
       }
     }
@@ -138,7 +137,7 @@ struct ProfileView: View {
                           })
                           .sheet(isPresented: $isEditModalShow, onDismiss: {
                             self.userData.fetchItem()
-
+                            
                             /// fill state variable with data from environtment object after fetchItem()
                             self.fullname = userData.item?.name ?? ""
                             self.email = userData.item?.email ?? ""

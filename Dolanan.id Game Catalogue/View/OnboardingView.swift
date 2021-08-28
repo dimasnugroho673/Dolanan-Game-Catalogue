@@ -49,7 +49,10 @@ struct OnboardingView: View {
 
           Button(action: {
             UserDefaults.standard.setValue(true, forKey: "UserExist")
+
+            /// insert data dummy
             userData.addItem(data: UserDataModel(name: "Dimas Nugroho Putro", email: "dimasnugroho673@gmail.com", phoneNumber: "082285592029", website: "dimasnugroho673.github.io", githubUrl: "https://github.com/dimasnugroho673", profilePicture: Data()))
+            
             self.isUserExist = true
             self.presentation.wrappedValue.dismiss()
           }, label: {
