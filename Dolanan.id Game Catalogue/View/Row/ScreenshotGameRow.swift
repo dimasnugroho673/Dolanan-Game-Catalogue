@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import URLImage
+import SDWebImageSwiftUI
 
 struct ScreenshotGameRow: View {
   
@@ -22,24 +22,20 @@ struct ScreenshotGameRow: View {
           ForEach(self.screenshots, id: \.id) { screenshot in
             Spacer()
             Spacer()
-            URLImage(URL(string: screenshot.image)!) { image in
-              image
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fill)
-                .clipped()
-                .cornerRadius(5)
-            }
-            .frame(width: 300, height: 150)
-            .clipped()
-            .cornerRadius(15)
-            .onTapGesture {
-              isFullScreen.toggle()
-              activePreview = screenshot.image
-            }
-            .fullScreenCover(isPresented: $isFullScreen, content: {
-              PreviewScreenshotView(screenshotPreview: self.$activePreview)
-            })
+            WebImage(url: URL(string: screenshot.image)!)
+              .resizable()
+              .renderingMode(.original)
+              .aspectRatio(contentMode: .fill)
+              .frame(width: 300, height: 150)
+              .clipped()
+              .cornerRadius(15)
+              .onTapGesture {
+                isFullScreen.toggle()
+                activePreview = screenshot.image
+              }
+              .fullScreenCover(isPresented: $isFullScreen, content: {
+                PreviewScreenshotView(screenshotPreview: self.$activePreview)
+              })
             Spacer()
           }
         }
