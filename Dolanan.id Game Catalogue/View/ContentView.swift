@@ -33,10 +33,10 @@ struct ContentView: View {
             Text("Search")
           }
         
-        GameBookmarkView()
+        GameFavoriteView()
           .tabItem {
-            Image(systemName: "bookmark")
-            Text("Bookmark")
+            Image(systemName: "text.badge.star")
+            Text("Favorite")
           }
       }
     } else {

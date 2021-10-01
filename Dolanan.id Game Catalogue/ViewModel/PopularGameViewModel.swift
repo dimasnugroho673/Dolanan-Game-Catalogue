@@ -11,13 +11,7 @@ import Combine
 
 class PopularGameViewModel: ObservableObject {
   
-  let objectWillChange = ObservableObjectPublisher()
-  
-  @Published var dataPopularGame = [ResultPopularGame]() {
-    willSet {
-      objectWillChange.send()
-    }
-  }
+  @Published var dataPopularGame = [ResultPopularGame]()
   
   @Published var isLoading = true
   @Published var errorMessage: String = ""

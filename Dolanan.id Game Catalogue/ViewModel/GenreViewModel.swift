@@ -11,14 +11,7 @@ import Combine
 
 class GenreViewModel: ObservableObject {
   
-  let objectWillChange = ObservableObjectPublisher()
-  
-  @Published var dataGenres = [GenreResults]() {
-    willSet {
-      objectWillChange.send()
-    }
-  }
-  
+  @Published var dataGenres = [GenreResults]()
   @Published var isLoading = true
   @Published var errorMessage: String = ""
   

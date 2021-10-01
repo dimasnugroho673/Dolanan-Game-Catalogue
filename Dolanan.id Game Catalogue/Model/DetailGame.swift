@@ -58,21 +58,3 @@ struct ChildPlatform: Codable {
     case name
   }
 }
-
-struct GameBookmarkModel: Codable {
-  var id: Int
-  var name: String
-  var genres: [Genres]
-  var rating: Int
-  var backgroundImage: String
-  var screenshots: [Screenshots]
-  
-  enum CodingKeys: String, CodingKey {
-    case id
-    case name
-    case genres
-    case rating
-    case backgroundImage
-    case screenshots
-  }
-}

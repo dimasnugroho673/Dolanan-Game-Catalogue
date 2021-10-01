@@ -10,14 +10,8 @@ import SwiftUI
 import Combine
 
 class CreatorViewModel: ObservableObject {
-  
-  let objectWillChange = ObservableObjectPublisher()
-  
-  @Published var dataCreators = [Result]() {
-    willSet {
-      objectWillChange.send()
-    }
-  }
+
+  @Published var dataCreators = [Result]()
   
   @Published var isLoading = true
   @Published var errorMessage: String = ""

@@ -24,7 +24,7 @@ struct ProfilePictureNavbar: View {
             .frame(width: 37, height: 37)
             .clipShape(Circle())
         } else {
-          Image("profile_dimas_greyscle")
+          Image("profile_dummy")
             .resizable()
             .renderingMode(.original)
             .frame(width: 37, height: 37)

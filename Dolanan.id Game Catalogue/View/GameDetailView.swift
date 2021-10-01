@@ -17,7 +17,7 @@ struct GameDetailView: View {
   
   var id: Int = 0
   var title: String = ""
-  var rating: Int = 0
+  var rating: Float = 0.0
   var backgroundImage: String = ""
   var genres: [Genres] = []
   var screenshots: [Screenshots] = []
@@ -26,7 +26,7 @@ struct GameDetailView: View {
   var indexArrayOfHistories: Int = 0
   
   @ObservedObject var detailGameData = DetailGameViewModel()
-  @ObservedObject var gameBookmarkData = GameBookmarkViewModel()
+  @StateObject var gameFavoriteData = GameFavoriteViewModel()
   @ObservedObject var gameLikedData = GameLikedViewModel()
   
   @State var isBookmarked: Bool?
@@ -73,7 +73,7 @@ struct GameDetailView: View {
             .padding(.top, -10)
           
           HStack(spacing: 15) {
-            if gameBookmarkData.items.filter { $0.id == self.id }.count > 0 {
+            if gameFavoriteData.items.filter { $0.id == self.id }.count > 0 {
               Button(action: {
                 removeBookmarkButtonTap()
               }) {
@@ -81,7 +81,7 @@ struct GameDetailView: View {
                   Text("Remove")
                     .font(.body)
                     .fontWeight(.bold)
-                  Image(systemName: "bookmark.fill")
+                  Image(systemName: "star.fill")
                 }
               }.buttonStyle(RemoveBookmarkButtonStyle())
             } else {
@@ -90,10 +90,10 @@ struct GameDetailView: View {
                 hapticFeebackMedium.impactOccurred()
               }) {
                 HStack {
-                  Text("Boomark")
+                  Text("Favorite")
                     .font(.body)
                     .fontWeight(.bold)
-                  Image(systemName: "bookmark")
+                  Image(systemName: "star")
                 }
               }.buttonStyle(AddBookmarkButtonStyle())
             }
@@ -143,7 +143,7 @@ struct GameDetailView: View {
           
           HStack(spacing: 3) {
             ForEach(1...5, id: \.self) { index in
-              Image(systemName: index > (rating == 0 ? Int(detailGameData.detailGame?.rating ?? 0.0) : rating) ? "star" : "star.fill")
+              Image(systemName: index > Int(round((rating == 0 ? detailGameData.detailGame?.rating ?? 0.0 : rating))) ? "star" : "star.fill")
                 .foregroundColor(Color.init(.systemYellow))
             }
           }
@@ -262,19 +262,21 @@ struct GameDetailView: View {
         // kirim data ke model
         self.detailGameData.loadData(id: self.id)
         // fetch data
-        gameBookmarkData.fetchItems()
+        gameFavoriteData.fetchItems()
         gameLikedData.fetchItems()
+      }
+      .onDisappear {
+        gameFavoriteData.deinitObject()
       }
     }
   }
   
   func addBookmarkButtonTap() {
-    gameBookmarkData.addItem(data: GameBookmarkModel(id: id, name: title == "" ? (detailGameData.detailGame?.name ?? ""): title, genres: genres.isEmpty ? (detailGameData.detailGame?.genres ?? []) : genres, rating: rating == 0 ? Int(detailGameData.detailGame?.rating ?? 0.0) : rating, backgroundImage: backgroundImage == "" ? (detailGameData.detailGame?.backgroundImage ?? "") : backgroundImage, screenshots: screenshots.isEmpty ? [] : screenshots))
+    gameFavoriteData.addItem(id: id, name: title == "" ? (detailGameData.detailGame?.name ?? ""): title, released: detailGameData.detailGame?.released ?? "", backgroundImage: backgroundImage == "" ? (detailGameData.detailGame?.backgroundImage ?? "") : backgroundImage, rating: Float(rating == 0 ? detailGameData.detailGame?.rating ?? 0.0 : rating))
   }
   
   func removeBookmarkButtonTap() {
-    let bookmarkIndexInData = gameBookmarkData.items.firstIndex { $0.id == self.id }
-    gameBookmarkData.deleteItem(index: bookmarkIndexInData!)
+    gameFavoriteData.deleteItem(id: self.id)
   }
   
   func likeTap() {

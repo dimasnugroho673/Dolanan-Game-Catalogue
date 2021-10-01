@@ -15,7 +15,7 @@ struct SearchGameRow: View {
   var body: some View {
     VStack {
       ForEach(self.resultSearching, id: \.id) { game in
-        NavigationLink(destination: GameDetailView(id: game.id, title: game.name, rating: Int(round(game.rating)), backgroundImage: game.backgroundImage, genres: game.genres, screenshots: game.screenshots)) {
+        NavigationLink(destination: GameDetailView(id: game.id, title: game.name, rating: game.rating, backgroundImage: game.backgroundImage, genres: game.genres, screenshots: game.screenshots)) {
           VStack(alignment: .leading, spacing: 15) {
             WebImage(url: URL(string: game.backgroundImage)!)
               .resizable()

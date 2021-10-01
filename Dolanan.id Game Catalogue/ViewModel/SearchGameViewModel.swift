@@ -11,15 +11,9 @@ import Combine
 
 class SearchGameViewModel: ObservableObject {
   
-  let objectWillChange = ObservableObjectPublisher()
-  
   @Published var isLoading = true
   @Published var errorMessage: String = ""
-  @Published var resultSearching = [ResultPopularGame]() {
-    willSet {
-      objectWillChange.send()
-    }
-  }
+  @Published var resultSearching = [ResultPopularGame]()
   
   func loadData(keyword: String) {
     let keywordToURL = keyword.replacingOccurrences(of: " ", with: "+")

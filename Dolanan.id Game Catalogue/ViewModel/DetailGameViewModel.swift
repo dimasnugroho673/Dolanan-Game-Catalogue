@@ -11,16 +11,10 @@ import Combine
 
 class DetailGameViewModel: ObservableObject {
   
-  let objectWillChange = ObservableObjectPublisher()
-  
   @Published var isLoading = true
   @Published var errorMessage: String = ""
-  @Published var detailGame: DetailGameModel? {
-    willSet {
-      objectWillChange.send()
-    }
-  }
-  
+  @Published var detailGame: DetailGameModel?
+
   func loadData(id: Int) {
     guard let url = URL(string: "\(Constants.api)games/\(id)?key=\(Constants.apiKey)") else {
       fatalError("Error while get url")

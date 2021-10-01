@@ -11,15 +11,9 @@ import Combine
 
 class DetailCreatorViewModel: ObservableObject {
   
-  let objectWillChange = ObservableObjectPublisher()
-  
   @Published var isLoading = true
   @Published var errorMessage: String = ""
-  @Published var detailCreator: DetailCreatorModel? {
-    willSet {
-      objectWillChange.send()
-    }
-  }
+  @Published var detailCreator: DetailCreatorModel?
   
   func loadData(id: Int) {
     guard let url = URL(string: "\(Constants.api)creators/\(id)?key=\(Constants.apiKey)") else {
