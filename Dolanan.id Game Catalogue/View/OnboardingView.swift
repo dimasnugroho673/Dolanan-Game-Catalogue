@@ -4,20 +4,19 @@
 //
 //  Created by Dimas Putro on 22/08/21.
 //
-
 import SwiftUI
 
 struct OnboardingView: View {
-  
+
   @Environment(\.presentationMode) private var presentation
   @State private var activeImage = 0
   @Binding var isUserExist: Bool
-  
+
   private let imagesShow = ["img_onboarding", "img_onboarding2", "img_onboarding3"]
   private let timerShowcase = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
 
   @ObservedObject var userData = UserDataViewModel()
-  
+
   var body: some View {
     ZStack {
       Image(imagesShow[activeImage])
@@ -34,14 +33,14 @@ struct OnboardingView: View {
         .onReceive(timerShowcase) { _ in
           self.activeImage = (self.activeImage + 1) % self.imagesShow.count
         }
-      
+
       HStack {
         VStack {
           Text("Find your best game")
             .foregroundColor(.white)
             .font(.title)
             .bold()
-          
+
           Text("Explore - Discover - Play")
             .foregroundColor(Color.init(.systemGray3))
             .font(.subheadline)
@@ -52,7 +51,7 @@ struct OnboardingView: View {
 
             /// insert data dummy
             userData.addItem(data: UserDataModel(name: "Dimas Nugroho Putro", email: "dimasnugroho673@gmail.com", phoneNumber: "082285592029", website: "dimasnugroho673.github.io", githubUrl: "https://github.com/dimasnugroho673", profilePicture: Data()))
-            
+
             self.isUserExist = true
             self.presentation.wrappedValue.dismiss()
           }, label: {

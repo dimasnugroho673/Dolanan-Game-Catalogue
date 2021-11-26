@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct EditProfileView: View {
 
@@ -114,6 +115,12 @@ struct EditProfileView: View {
         }
         .padding(.top, 15)
         .listStyle(GroupedListStyle())
+
+        List {
+          Section(header: Text("Dimas Profile"), content: {
+            
+          })
+        }
       }
       .background(Color.init(.systemGray6))
 

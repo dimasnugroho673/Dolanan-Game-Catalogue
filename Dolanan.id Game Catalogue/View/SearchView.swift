@@ -106,6 +106,7 @@ struct SearchView: View {
                     }
                   }
                 }
+                .listStyle(PlainListStyle())
                 
               }
               .frame(height: geometry.size.height)

@@ -232,6 +232,7 @@ struct GameDetailView: View {
                 }
             }
           }
+          .listStyle(PlainListStyle())
           .padding(.leading, -10)
           .frame(width: .infinity, height: 400)
           .onAppear {

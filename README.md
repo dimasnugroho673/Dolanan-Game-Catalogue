@@ -11,7 +11,7 @@ Aplikasi ini merupakan katalog game berbasis `iOS` native yang dibangun dengan `
 - [x] Pencarian game
 - [x] Bookmark game menggunakan data persistence
 - [x] Like Game menggunakan data persistence
-- [ ] Edit profile
+- [x] Edit profile
 - [ ] Menampilkan game favorit pada Widget homescreen
 - [ ] Unduh katalog data pada saat offline menggunakan data persistence
 

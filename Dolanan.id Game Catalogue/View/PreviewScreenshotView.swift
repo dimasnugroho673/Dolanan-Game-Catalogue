@@ -31,6 +31,14 @@ struct PreviewScreenshotView: View {
       }, label: {
         Text("Done")
       }))
+
+      HStack {
+        WebImage(url: URL(string: screenshotPreview))
+          .resizable()
+          .rotationEffect(Angle(degrees: -90))
+          .aspectRatio(contentMode: .fill)
+          
+      }
     }
   }
 }

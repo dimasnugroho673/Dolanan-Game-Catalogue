@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 class PopularGameViewModel: ObservableObject {
-  
+
   @Published var dataPopularGame = [ResultPopularGame]()
   
   @Published var isLoading = true
